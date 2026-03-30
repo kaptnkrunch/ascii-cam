@@ -11,9 +11,9 @@ use std::sync::{Arc, Mutex};
 #[derive(Clone, Default)]
 pub struct BandEnergy {
     /// Normalised 0.0–1.0 energy per band (smoothed)
-    pub bass: f32,  // 20–250 Hz
-    pub mid: f32,   // 250–4000 Hz
-    pub high: f32,  // 4000–20000 Hz
+    pub bass: f32,  // 20–90 Hz
+    pub mid: f32,   // 1700–4000 Hz
+    pub high: f32,  // 7000–20000 Hz
 }
 
 pub type SharedAudio = Arc<Mutex<BandEnergy>>;
@@ -50,7 +50,7 @@ pub fn default_device() -> Option<AudioDevice> {
 
 // ── Stream builder ────────────────────────────────────────────────────────────
 
-const FFT_SIZE: usize = 2048;
+const FFT_SIZE: usize = 1024;
 const SMOOTH: f32 = 0.3; // lower = smoother / slower response
 
 pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<Stream> {

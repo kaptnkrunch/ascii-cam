@@ -1,3 +1,5 @@
+<img src="https://github.com/kaptnkrunch/ascii-cam/blob/main/ascii_cam_audio_architecture.svg">
+
 Technischer Plan:
 Neue Crates:
 

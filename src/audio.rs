@@ -51,7 +51,7 @@ pub fn default_device() -> Option<AudioDevice> {
 // ── Stream builder ────────────────────────────────────────────────────────────
 
 const FFT_SIZE: usize = 2048;
-const SMOOTH: f32 = 0.15; // lower = smoother / slower response
+const SMOOTH: f32 = 0.3; // lower = smoother / slower response
 
 pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<Stream> {
     let config = dev.device.default_input_config()?;

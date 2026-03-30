@@ -35,10 +35,12 @@ Aktuelles Mapping wird in der Statuszeile angezeigt
 **Bänder:**
 
 Die Bänder sind vorerst fix
+
+| Band | Frequenzbereich |
 |-------|--------|
-| BÄSSE | 20Hz - 90Hz |
-| MITTEN | 1400Hz - 4000Hz |
-| HÖHEN | 7000Hz - 20000Hz |
+| `BÄSSE` | `20Hz - 90Hz` |
+| `MITTEN` | `1400Hz - 4000Hz` |
+| `HÖHEN` | `7000Hz - 20000Hz` |
 
 ---
 **Wie das Script-Mapping funktioniert:** Es triggert nicht kontinuierlich, sondern nur auf der **steigenden Flanke** über 0.75 Energie — also wechselt das Schriftsystem einmal pro Transient (z.B. jeder Schlagzeugschlag), nicht dauerhaft flackernd.

@@ -16,7 +16,7 @@ Aktuelles Mapping wird in der Statuszeile angezeigt
 **Schriftsysteme** (Unicode-Blöcke als Zeichensätze):
 - Latin (Standard ASCII)
 - Kyrillisch (`А Б В ... Я`)
-- Hiragana / Katakana
+- Hiragana / Katakana (zeilen umbruch ncoh nicht korrekt)
 - Arabisch (RTL, aber als Zeichen-Dichte verwendbar)
 - Braille (sehr dicht)
 

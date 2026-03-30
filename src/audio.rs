@@ -2,7 +2,7 @@ use cpal::{
     traits::{DeviceTrait, HostTrait, StreamTrait},
     Device, SampleFormat, Stream, StreamConfig,
 };
-use ringbuf::{traits::{Consumer, Producer, Split, Observer}, HeapRb};
+use ringbuf::{traits::{Consumer, Observer, Producer, Split}, HeapRb};
 use rustfft::{num_complex::Complex, FftPlanner};
 use std::sync::{Arc, Mutex};
 
@@ -144,7 +144,6 @@ fn band_energy(mags: &[f32], bin_hz: f32, lo: f32, hi: f32) -> f32 {
 }
 
 type RbProd = ringbuf::wrap::caching::Caching<Arc<ringbuf::storage::Heap<f32>>, true, false>;
-type RbCons = ringbuf::wrap::caching::Caching<Arc<ringbuf::storage::Heap<f32>>, false, true>;
 
 fn build_stream_f32(
     device: &Device,

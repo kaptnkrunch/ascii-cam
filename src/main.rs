@@ -248,6 +248,10 @@ fn main() -> anyhow::Result<()> {
                         state.scale = (state.scale + 1).min(8),
                     KeyCode::Char('-') =>
                         state.scale = state.scale.saturating_sub(1).max(1),
+                    KeyCode::Char(']') =>
+                        state.contrast = (state.contrast + 0.1).min(4.0),
+                    KeyCode::Char('[') =>
+                        state.contrast = (state.contrast - 0.1).max(0.5),
                     KeyCode::Char('s') => state.script = state.script.next(),
                     _ => {}
                 }
@@ -280,7 +284,7 @@ fn main() -> anyhow::Result<()> {
         let (term_cols, term_rows) = terminal::size()?;
         let scale = state.scale.max(1);
         let ascii_cols = (term_cols as u32 / scale).max(1);
-        let ascii_rows = (term_rows.saturating_sub(3) as u32 / scale / 2).max(1);
+        let ascii_rows = (term_rows.saturating_sub(3) as u32 / scale).max(1);
 
         let lines = frame_to_ascii(&gray, ascii_cols, ascii_rows, &state);
 
@@ -311,7 +315,7 @@ fn main() -> anyhow::Result<()> {
         // Status (letzte Zeile)
         let status = format!(
             " {script} | kontrast:{:.1} skala:{scale} dichte:{:.0}% | \
-             1/2/3:band  m:remap  i:invert  s:script  q:quit",
+             1/2/3:band  m:remap  i:invert  s:script  [/]:kontrast  +/-:skala  q:quit",
             state.contrast,
             state.density * 100.0,
             script = state.script.name(),

@@ -2,5 +2,5 @@
 # Install ALSA development libraries for audio support
 pre-install = [
     "apt-get update",
-    "apt-get install -y libasound2-dev pkg-config"
+    "apt-get install -y libasound2-dev pkg-config libclang-dev clang"
 ]

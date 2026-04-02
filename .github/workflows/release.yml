@@ -72,6 +72,9 @@ jobs:
 
       - name: Build (ARM64 Linux with cross)
         if: matrix.target == 'aarch64-unknown-linux-gnu'
+        env:
+          CROSS_TARGET_AARCH64_UNKNOWN_LINUX_GNU_PRE_BUILD: |
+            apt-get update && apt-get install -y libasound2-dev pkg-config
         run: cross build --release --target ${{ matrix.target }} --no-default-features
 
       - name: Build (Other targets)

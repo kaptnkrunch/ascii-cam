@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["FFT_SIZE","SMOOTH"],"fn":["band_energy","build_stream_f32","build_stream_i16","default_device","list_devices","start_capture"],"struct":["AudioDevice","BandEnergy"],"type":["RbProd","SharedAudio"]};

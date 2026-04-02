@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ALL_MARKERS","NO_MARKERS"],"enum":["DctMethod","Format"],"struct":["Decompress","DecompressBuilder","DecompressStarted","MarkerData","MarkerIter"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["NokhwaError"],"fn":["native_api_backend","nokhwa_check","nokhwa_initialize","query"],"mod":["backends","buffer","camera_traits","error","pixel_format","threaded","utils"],"struct":["Buffer","Camera"],"trait":["FormatDecoder"]};

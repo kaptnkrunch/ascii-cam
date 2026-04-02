@@ -1,0 +1,11 @@
+/home/crunch/ascii-cam/target/debug/deps/midir-ccfa70918fca1460.d: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/os/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/os/unix.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/errors.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/common.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/backend/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/backend/alsa/mod.rs
+
+/home/crunch/ascii-cam/target/debug/deps/libmidir-ccfa70918fca1460.rmeta: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/os/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/os/unix.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/errors.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/common.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/backend/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/backend/alsa/mod.rs
+
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/lib.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/os/mod.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/os/unix.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/errors.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/common.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/backend/mod.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/midir-0.10.3/src/backend/alsa/mod.rs:

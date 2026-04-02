@@ -1,0 +1,12 @@
+/home/crunch/ascii-cam/target/release/deps/rosc-2d84704cc0f95e48.d: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/errors.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/types.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/decoder.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/encoder.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/address.rs
+
+/home/crunch/ascii-cam/target/release/deps/librosc-2d84704cc0f95e48.rlib: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/errors.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/types.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/decoder.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/encoder.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/address.rs
+
+/home/crunch/ascii-cam/target/release/deps/librosc-2d84704cc0f95e48.rmeta: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/errors.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/types.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/decoder.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/encoder.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/address.rs
+
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/lib.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/errors.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/types.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/decoder.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/encoder.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rosc-0.8.1/src/address.rs:

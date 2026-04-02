@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DCTSIZE","JPEG_LIB_VERSION"],"enum":["ColorSpace","Marker","PixelDensityUnit"],"mod":["compress","decompress","qtable"],"struct":["CompInfo","PixelDensity"],"trait":["ColorSpaceExt","CompInfoExt"]};

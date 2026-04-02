@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"static":["ALL_TABLES","AhumadaWatsonPeterson","AnnexK_Chroma","AnnexK_Luma","Flat","KleinSilversteinCarney","MSSSIM_Chroma","MSSSIM_Luma","NRobidoux","PSNRHVS_Chroma","PSNRHVS_Luma","PetersonAhumadaWatson","WatsonTaylorBorthwick"],"struct":["QTable"]};

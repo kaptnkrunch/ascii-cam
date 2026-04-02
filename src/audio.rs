@@ -76,7 +76,7 @@ pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<St
 
     // Ring buffer: audio thread writes, FFT thread reads
     let rb = HeapRb::<f32>::new(FFT_SIZE * 4);
-    let (mut prod, mut cons) = rb.split();
+    let (prod, cons) = rb.split();
 
     // Spawn FFT analysis thread
     let shared_clone = shared.clone();

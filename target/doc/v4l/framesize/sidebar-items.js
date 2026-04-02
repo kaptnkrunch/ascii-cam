@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["FrameSizeEnum"],"struct":["Discrete","FrameSize","Stepwise"]};

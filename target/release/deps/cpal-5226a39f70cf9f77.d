@@ -1,0 +1,13 @@
+/home/crunch/ascii-cam/target/release/deps/cpal-5226a39f70cf9f77.d: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/error.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/alsa/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/alsa/enumerate.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/null/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/platform/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/samples_formats.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/traits.rs
+
+/home/crunch/ascii-cam/target/release/deps/libcpal-5226a39f70cf9f77.rmeta: /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/lib.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/error.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/alsa/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/alsa/enumerate.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/null/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/platform/mod.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/samples_formats.rs /home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/traits.rs
+
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/lib.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/error.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/mod.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/alsa/mod.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/alsa/enumerate.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/host/null/mod.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/platform/mod.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/samples_formats.rs:
+/home/crunch/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cpal-0.15.3/src/traits.rs:

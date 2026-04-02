@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_COMPONENTS","MAX_MCU_HEIGHT"],"enum":["ScanMode"],"struct":["Compress","CompressStarted"]};

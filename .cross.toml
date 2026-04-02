@@ -1,10 +1,5 @@
 [target.aarch64-unknown-linux-gnu]
 # Install ALSA development libraries for audio support
-pre-install = [
-    "apt-get update",
-    "apt-get install -y libasound2-dev pkg-config",
-    "echo 'deb http://deb.debian.org/debian bookworm main' > /etc/apt/sources.list.d/bookworm.list",
-    "apt-get update",
-    "apt-get install -y -t bookworm libclang-dev clang"
+pre-build = [
+    "apt-get update && apt-get install -y libasound2-dev pkg-config"
 ]
-

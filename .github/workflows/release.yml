@@ -20,9 +20,9 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             artifact: ascii-cam-x86_64-unknown-linux-gnu
-          - os: ubuntu-latest
-            target: aarch64-unknown-linux-gnu
-            artifact: ascii-cam-aarch64-unknown-linux-gnu
+          # - os: ubuntu-latest
+          #   target: aarch64-unknown-linux-gnu
+          #   artifact: ascii-cam-aarch64-unknown-linux-gnu
           - os: macos-latest
             target: x86_64-apple-darwin
             artifact: ascii-cam-x86_64-apple-darwin
@@ -66,16 +66,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pkg-config libasound2-dev
 
-      - name: Install cross
-        if: matrix.target == 'aarch64-unknown-linux-gnu'
-        run: cargo install cross
+      # - name: Install cross
+      #   if: matrix.target == 'aarch64-unknown-linux-gnu'
+      #   run: cargo install cross
 
-      - name: Build (ARM64 Linux with cross)
-        if: matrix.target == 'aarch64-unknown-linux-gnu'
-        run: cross build --release --target ${{ matrix.target }} --no-default-features
+      # - name: Build (ARM64 Linux with cross)
+      #   if: matrix.target == 'aarch64-unknown-linux-gnu'
+      #   run: cross build --release --target ${{ matrix.target }} --no-default-features
 
-      - name: Build (Other targets)
-        if: matrix.target != 'aarch64-unknown-linux-gnu'
+      - name: Build
         run: cargo build --release --target ${{ matrix.target }} --features camera
 
       - name: Package (Unix)

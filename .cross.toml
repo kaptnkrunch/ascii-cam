@@ -1,0 +1,6 @@
+[target.aarch64-unknown-linux-gnu]
+# Install ALSA development libraries for audio support
+pre-install = [
+    "apt-get update",
+    "apt-get install -y libasound2-dev pkg-config"
+]

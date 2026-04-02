@@ -1,16 +1,37 @@
+# DEBUG COPY - for testing fixes without affecting main codebase
+# Run from this directory: cd DEBUG && cargo build && ./target/debug/ascii-cam
+
 [package]
 name = "ascii-cam"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+default = []
+realsense = []
+
 [dependencies]
-nokhwa    = { version = "0.10", features = ["input-v4l", "output-threaded"] }
-crossterm = "0.29"
+nokhwa    = { version = "0.10", default-features = false, features = ["output-threaded"] }
+crossterm = "0.27"
 image     = "0.25"
 anyhow    = "1"
-cpal      = "0.17"
+cpal      = "0.15"
 rustfft   = "6"
 ringbuf   = "0.4"
+midir     = "0.10"
+rosc      = "0.8"
+tokio     = { version = "1", features = ["rt-multi-thread", "macros", "sync"] }
+zune-jpeg = "0.5"
 
+[target.'cfg(target_os = "linux")'.dependencies]
+nokhwa = { version = "0.10", default-features = false, features = ["input-v4l", "output-threaded"] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+nokhwa = { version = "0.10", default-features = false, features = ["input-msmf", "output-threaded"] }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+nokhwa = { version = "0.10", default-features = false, features = ["input-avfoundation", "output-threaded"] }
+
+# Use opt-level = 2 to match debug behavior, or = 3 for full release
 [profile.release]
-opt-level = 3
+opt-level = 2

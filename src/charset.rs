@@ -23,7 +23,7 @@ pub enum Charset {
     Punctuation, // rein aus Satzzeichen
     Symbols,     // rein aus Sonderzeichen
     // High Contrast (1.4)
-    Jnvsh, // Maximale Luminanz-Dynamik für audio-reaktive Effekte
+    JNVSH, // Maximale Luminanz-Dynamik für audio-reaktive Effekte
 }
 
 impl Charset {
@@ -36,7 +36,7 @@ impl Charset {
         Charset::Braille,
         Charset::Punctuation,
         Charset::Symbols,
-        Charset::Jnvsh,
+        Charset::JNVSH,
     ];
 
     pub fn name(self) -> &'static str {
@@ -49,7 +49,7 @@ impl Charset {
             Charset::Braille => "Braille",
             Charset::Punctuation => "Satzzeichen",
             Charset::Symbols => "Sonderzeichen",
-            Charset::Jnvsh => "JNVSH",
+            Charset::JNVSH => "JNVSH",
         }
     }
 
@@ -116,11 +116,11 @@ impl Charset {
                 '▰', '▱', '▲', '▴', '▶', '▸', '▼', '▾', '◀', '◂', '◆', '◈', '▉', '▊', '▋', '▌',
                 '▍', '▎', '▏', '█',
             ],
-            // 1.4: Jnvsh - Maximale Luminanz-Dynamik
+            // 1.4: JNVSH - Maximale Luminanz-Dynamik
             // Kombiniert: leere Zeichen, Kanten-Zeichen, Blöcke
             // Optimiert für audio-reaktive Effekte mit maximalem Kontrast
-            Charset::Jnvsh => &[
-                // Leichteste (Index 0-15): Minimal
+            Charset::JNVSH => &[
+                // Leichteste (Index 0-15): Minimal占用
                 ' ', '.', '·', '`', '\'', ',', '´', '¨', ':', ';', '·', '•', '°', 'µ', '†', '‡',
                 // Leicht (16-31): Dünne Linien
                 '-', '_', '~', '¯', '´', 'ˋ', 'ˊ', 'ː', '∵', '∴', '⊙', '○', '◌', '◠', '◡', '⋆',
@@ -144,7 +144,7 @@ impl Charset {
     /// contrast=1.0 → voller Satz; contrast=0.5 → mittlere 50% der Dichte-Range.
     /// Dadurch werden bei hohem Kontrast nur extreme (helle + dunkle) Zeichen genutzt,
     /// bei niedrigem Kontrast nur die mittlere Grauzone.
-    pub fn slice_by_contrast(chars: &[char], contrast: f32) -> &[char] {
+    pub fn slice_by_contrast<'a>(chars: &'a [char], contrast: f32) -> &'a [char] {
         let len = chars.len();
         if len < 3 {
             return chars;
@@ -269,8 +269,8 @@ impl Charset {
                 ];
                 (fine, medium, coarse)
             }
-            Charset::Jnvsh => {
-                // Jnvsh: Speziell für maximale Kontrast-Dynamik
+            Charset::JNVSH => {
+                // JNVSH: Speziell für maximale Kontrast-Dynamik
                 let fine = vec![
                     ' ', '.', '·', '`', '\'', ',', '´', '¨', ':', ';', '•', '°', 'µ', '†', '‡',
                     '-', '_', '~', '¯', 'ː', '∵', '∴', '⊙', '○',

@@ -106,3 +106,101 @@ Zeichengröße im Terminal vorher verkleinern mit `SHIFT+STRG+-`, dann:
 ### System-Audio (Loopback)
 Für Musik vom System: in PipeWire ein `.monitor`-Device wählen.  
 Geht am einfachsten mit `pavucontrol` oder `pw-link`, oder direkt über das Audio-Menü im Programm (`Space`).
+
+---
+
+## Debugging Workflow
+
+### Verzeichnis-Struktur
+```
+ascii-cam/
+├── src/           # Hauptquellcode (Produktion)
+├── DEBUG/         # Test-Umgebung
+│   ├── src/       # Kopierte Quelldateien
+│   ├── fix/       # Vorgeschlagene Fixes
+│   │   ├── debugdoc.md   # Workflow-Dokumentation
+│   │   ├── README.md     # Fix-Index
+│   │   └── <fix-name>/  # Individuelle Fix-Verzeichnisse
+│   ├── debug.sh   # Build-Helfer-Skript
+│   └── *.md       # Dokumentation
+```
+
+### Debugging-Prozess
+
+1. **Problem reproduzieren** im Hauptverzeichnis
+2. **DEBUG-Verzeichnis erstellen:**
+   ```bash
+   cp -r src Cargo.toml Cargo.lock DEBUG/
+   ```
+3. **In DEBUG wechseln und testen:**
+   ```bash
+   cd DEBUG
+   ./debug.sh build
+   ./debug.sh run
+   ```
+4. **Fix implementieren** in `DEBUG/src/main.rs`
+5. **Testen:** Debug UND Release build
+6. **Fix dokumentieren** in `DEBUG/fix/<fix-name>/`
+7. **Merge-Kriterien prüfen:**
+   - [ ] Kompiliert ohne Fehler (debug + release)
+   - [ ] Fix funktioniert
+   - [ ] Keine neuen Warnings
+   - [ ] Dokumentation aktualisiert
+8. **Fix anwenden:** Geänderte Dateien ins Hauptverzeichnis kopieren
+
+### Fix Workflow
+
+```
+┌──────────────────────────────────────┐
+│ Problem identifizieren                │
+└──────────────────┬───────────────────┘
+                   ▼
+┌──────────────────────────────────────┐
+│ DEBUG/fix/<fix-name>/ erstellen     │
+└──────────────────┬───────────────────┘
+                   ▼
+┌──────────────────────────────────────┐
+│ fix.md und src/ darin erstellen      │
+└──────────────────┬───────────────────┘
+                   ▼
+┌──────────────────────────────────────┐
+│ Testen: debug.sh build && run        │
+└──────────────────┬───────────────────┘
+                   ▼
+┌──────────────────────────────────────┐
+│ Fix verifizieren (debug + release)  │
+└──────────────────┬───────────────────┘
+                   ▼
+┌──────────────────────────────────────┐
+│ In Hauptverzeichnis mergen          │
+└──────────────────────────────────────┘
+```
+
+### Debug-Build vs Release-Build
+| Aspekt | Debug | Release |
+|--------|-------|---------|
+| Optimierung | `opt-level = 0` | `opt-level = 2` |
+| Debug-Infos | Ja | Nein |
+| Debug-Panel | Standardmäßig AN | Standardmäßig AUS |
+| Bounds Checks | Ja | Nein |
+
+### Bekannte Probleme
+
+Siehe `TROUBLESHOOTING.md` für dokumentierte Probleme:
+- **Release Build Resize Crash** - Under Investigation
+- **Camera MJPEG Decode Error** - RESOLVED (zune-jpeg fallback)
+
+### Debug-Befehle
+```bash
+# Debug build
+cargo build
+
+# Release build
+cargo build --release
+
+# Mit Logging
+./target/debug/ascii-cam 2>&1 | tee debug.log
+
+# Release Crash capture
+./target/release/ascii-cam 2>&1 | tee crash.log
+```

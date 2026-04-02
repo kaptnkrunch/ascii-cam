@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["Plane","PlaneConfig","PlaneData","PlaneIter","PlaneMutSlice","PlaneOffset","PlaneSlice","RowsIter","RowsIterMut"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["close","ioctl","mmap","munmap","open"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["transfer"],"mod":["rb","storage","traits","wrap"],"struct":["Arc"],"type":["HeapCons","HeapProd","HeapRb","StaticCons","StaticProd","StaticRb"]};

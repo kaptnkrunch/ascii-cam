@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["Heap","Owning","Ref"],"trait":["Storage"],"type":["Array","Slice"]};

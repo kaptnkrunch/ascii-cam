@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["EncoderStatus","FrameType","PixelType"],"struct":["ChromaticityPoint","EncoderStats","Frame","FrameParameters","Packet","Rational"],"trait":["CastFromPrimitive","Pixel"]};

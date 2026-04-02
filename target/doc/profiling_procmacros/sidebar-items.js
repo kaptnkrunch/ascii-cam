@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"attr":["all_functions","function","skip"]};

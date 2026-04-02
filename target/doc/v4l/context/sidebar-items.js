@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["enum_devices"],"struct":["Node"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["colorspace","description","field","fourcc","quantization","transfer"],"struct":["Flags","Format"]};

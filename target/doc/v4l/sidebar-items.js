@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["buffer","capability","context","control","device","format","fraction","frameinterval","framesize","io","memory","parameters","prelude","timestamp","v4l2","video"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Color"],"fn":["slice_bits","slice_reader"],"mod":["decoder","encoder","maps","tiff"],"struct":["Bits","ByteReader","VecWriter"],"trait":["BitReader","BitWriter"]};

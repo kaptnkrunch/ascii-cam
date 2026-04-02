@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"attr":["cold_for_target_arch"]};

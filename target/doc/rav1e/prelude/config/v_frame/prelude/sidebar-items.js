@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["ChromaSampling","PixelType"],"fn":["clamp","msb","round_shift"],"trait":["CastFromPrimitive","Coefficient","Fixed","ILog","Pixel","RegisteredPrimitive"]};

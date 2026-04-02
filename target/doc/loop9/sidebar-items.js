@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["loop9","loop9_img"],"struct":["Triple"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["EncoderStatus","InvalidConfig","PixelType"],"mod":["color","config","data","prelude","version"],"struct":["Config","Context","EncoderConfig","Frame","Packet"],"trait":["CastFromPrimitive","Pixel"]};

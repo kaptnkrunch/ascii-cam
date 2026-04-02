@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["id_to_known_camera_control","known_camera_control_to_id","query"],"struct":["V4LCaptureDevice"]};

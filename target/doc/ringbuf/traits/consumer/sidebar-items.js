@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["IntoIter","PopIter"],"trait":["Consumer","DelegateConsumer"],"type":["Iter","IterMut"]};

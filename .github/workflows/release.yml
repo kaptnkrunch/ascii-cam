@@ -61,21 +61,27 @@ jobs:
           restore-keys: ${{ matrix.target }}-target-
 
       - name: Install dependencies (Linux x86_64)
-        if: matrix.os == 'ubuntu-latest' && matrix.target == 'x86_64-unknown-linux-gnu'
+        if: matrix.target == 'x86_64-unknown-linux-gnu'
         run: |
           sudo apt-get update
           sudo apt-get install -y pkg-config libasound2-dev
 
-      - name: Install cross-rs for ARM64
-        if: matrix.os == 'ubuntu-latest' && matrix.target == 'aarch64-unknown-linux-gnu'
+      - name: Install dependencies (Linux ARM64)
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
         run: |
-          cargo install cross --git https://github.com/cross-rs/cross
-          cross --version
+          sudo dpkg --add-architecture arm64
+          sudo apt-get update
+          sudo apt-get install -y pkg-config gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          sudo apt-get install -y libasound2-dev:arm64
 
       - name: Build
         run: |
           if [ "${{ matrix.target }}" = "aarch64-unknown-linux-gnu" ]; then
-            cross build --release --target ${{ matrix.target }}
+            export PKG_CONFIG_SYSROOT_DIR=/usr/aarch64-linux-gnu
+            export PKG_CONFIG_PATH=/usr/lib/aarch64-linux-gnu/pkgconfig
+            export PKG_CONFIG_ALLOW_CROSS=1
+            export PKG_CONFIG=aarch64-linux-gnu-pkg-config
+            cargo build --release --target ${{ matrix.target }}
           else
             cargo build --release --target ${{ matrix.target }}
           fi

@@ -72,7 +72,7 @@ jobs:
 
       - name: Build (ARM64 Linux with cross)
         if: matrix.target == 'aarch64-unknown-linux-gnu'
-        run: cross build --release --target ${{ matrix.target }} --no-default-features --features camera
+        run: cross build --release --target ${{ matrix.target }} --no-default-features
 
       - name: Build (Other targets)
         if: matrix.target != 'aarch64-unknown-linux-gnu'

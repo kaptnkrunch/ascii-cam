@@ -2,7 +2,10 @@ use cpal::{
     traits::{DeviceTrait, HostTrait, StreamTrait},
     Device, SampleFormat, Stream, StreamConfig,
 };
-use ringbuf::{traits::{Consumer, Observer, Producer, Split}, HeapRb};
+use ringbuf::{
+    traits::{Consumer, Observer, Producer, Split},
+    HeapRb,
+};
 use rustfft::{num_complex::Complex, FftPlanner};
 use std::sync::{Arc, Mutex};
 
@@ -11,9 +14,9 @@ use std::sync::{Arc, Mutex};
 #[derive(Clone, Default)]
 pub struct BandEnergy {
     /// Normalised 0.0–1.0 energy per band (smoothed)
-    pub bass: f32,  // 20–90 Hz
-    pub mid: f32,   // 1700–4000 Hz
-    pub high: f32,  // 7000–20000 Hz
+    pub bass: f32, // 20–90 Hz
+    pub mid: f32,  // 1700–4000 Hz
+    pub high: f32, // 7000–20000 Hz
 }
 
 pub type SharedAudio = Arc<Mutex<BandEnergy>>;
@@ -31,9 +34,16 @@ pub fn list_devices() -> Vec<AudioDevice> {
     host.input_devices()
         .map(|devs| {
             devs.filter_map(|d| {
-                let name = d.name().unwrap_or_else(|_| "unknown".into());
+                let name = match d.description() {
+                    Ok(desc) => desc.to_string(),
+                    Err(_) => "unknown".to_string(),
+                };
                 let is_loopback = name.to_lowercase().contains("monitor");
-                Some(AudioDevice { name, is_loopback, device: d })
+                Some(AudioDevice {
+                    name,
+                    is_loopback,
+                    device: d,
+                })
             })
             .collect()
         })
@@ -43,9 +53,16 @@ pub fn list_devices() -> Vec<AudioDevice> {
 pub fn default_device() -> Option<AudioDevice> {
     let host = cpal::default_host();
     let d = host.default_input_device()?;
-    let name = d.name().unwrap_or_else(|_| "default".into());
+    let name = match d.description() {
+        Ok(desc) => desc.to_string(),
+        Err(_) => "default".to_string(),
+    };
     let is_loopback = name.to_lowercase().contains("monitor");
-    Some(AudioDevice { name, is_loopback, device: d })
+    Some(AudioDevice {
+        name,
+        is_loopback,
+        device: d,
+    })
 }
 
 // ── Stream builder ────────────────────────────────────────────────────────────
@@ -55,7 +72,7 @@ const SMOOTH: f32 = 0.3; // lower = smoother / slower response
 
 pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<Stream> {
     let config = dev.device.default_input_config()?;
-    let sample_rate = config.sample_rate().0 as f32;
+    let sample_rate = config.sample_rate() as f32;
 
     // Ring buffer: audio thread writes, FFT thread reads
     let rb = HeapRb::<f32>::new(FFT_SIZE * 4);
@@ -79,7 +96,9 @@ pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<St
             }
             // Drain the oldest samples (skip if we lag behind)
             let skip = available.saturating_sub(FFT_SIZE);
-            for _ in 0..skip { cons.try_pop(); }
+            for _ in 0..skip {
+                cons.try_pop();
+            }
 
             // Read FFT_SIZE samples
             for s in buf.iter_mut() {
@@ -91,8 +110,10 @@ pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<St
                 .iter()
                 .enumerate()
                 .map(|(i, &s)| {
-                    let w = 0.5 * (1.0 - (2.0 * std::f32::consts::PI * i as f32
-                        / (FFT_SIZE - 1) as f32).cos());
+                    let w = 0.5
+                        * (1.0
+                            - (2.0 * std::f32::consts::PI * i as f32 / (FFT_SIZE - 1) as f32)
+                                .cos());
                     Complex::new(s * w, 0.0)
                 })
                 .collect();
@@ -100,22 +121,19 @@ pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<St
             fft.process_with_scratch(&mut spectrum, &mut scratch);
 
             // Convert to magnitude (only first half = positive freqs)
-            let mags: Vec<f32> = spectrum[..FFT_SIZE / 2]
-                .iter()
-                .map(|c| c.norm())
-                .collect();
+            let mags: Vec<f32> = spectrum[..FFT_SIZE / 2].iter().map(|c| c.norm()).collect();
 
             // Bin → Hz: freq = bin * sample_rate / FFT_SIZE
             let bin_hz = sample_rate / FFT_SIZE as f32;
 
-            let bass  = band_energy(&mags, bin_hz, 20.0,   90.0);
-            let mid   = band_energy(&mags, bin_hz, 1400.0,  4000.0);
-            let high  = band_energy(&mags, bin_hz, 7000.0, 20000.0);
+            let bass = band_energy(&mags, bin_hz, 20.0, 90.0);
+            let mid = band_energy(&mags, bin_hz, 1400.0, 4000.0);
+            let high = band_energy(&mags, bin_hz, 7000.0, 20000.0);
 
             // Smooth with exponential moving average
-            smooth.bass  = smooth.bass  * (1.0 - SMOOTH) + bass  * SMOOTH;
-            smooth.mid   = smooth.mid   * (1.0 - SMOOTH) + mid   * SMOOTH;
-            smooth.high  = smooth.high  * (1.0 - SMOOTH) + high  * SMOOTH;
+            smooth.bass = smooth.bass * (1.0 - SMOOTH) + bass * SMOOTH;
+            smooth.mid = smooth.mid * (1.0 - SMOOTH) + mid * SMOOTH;
+            smooth.high = smooth.high * (1.0 - SMOOTH) + high * SMOOTH;
 
             if let Ok(mut state) = shared_clone.lock() {
                 *state = smooth.clone();
@@ -136,14 +154,20 @@ pub fn start_capture(dev: AudioDevice, shared: SharedAudio) -> anyhow::Result<St
 fn band_energy(mags: &[f32], bin_hz: f32, lo: f32, hi: f32) -> f32 {
     let lo_bin = (lo / bin_hz) as usize;
     let hi_bin = ((hi / bin_hz) as usize).min(mags.len() - 1);
-    if lo_bin >= hi_bin { return 0.0; }
+    if lo_bin >= hi_bin {
+        return 0.0;
+    }
     let sum: f32 = mags[lo_bin..=hi_bin].iter().sum();
     let avg = sum / (hi_bin - lo_bin + 1) as f32;
     // Soft normalisation — tuned for typical mic levels
     (avg / 500.0).clamp(0.0, 1.0)
 }
 
-type RbProd = ringbuf::wrap::caching::Caching<Arc<ringbuf::SharedRb<ringbuf::storage::Heap<f32>>>, true, false>;
+type RbProd = ringbuf::wrap::caching::Caching<
+    Arc<ringbuf::SharedRb<ringbuf::storage::Heap<f32>>>,
+    true,
+    false,
+>;
 
 fn build_stream_f32(
     device: &Device,
@@ -176,7 +200,10 @@ fn build_stream_i16(
         config,
         move |data: &[i16], _| {
             for frame in data.chunks(channels) {
-                let mono = frame.iter().map(|&s| s as f32 / i16::MAX as f32).sum::<f32>()
+                let mono = frame
+                    .iter()
+                    .map(|&s| s as f32 / i16::MAX as f32)
+                    .sum::<f32>()
                     / channels as f32;
                 let _ = prod.try_push(mono);
             }

@@ -5,10 +5,10 @@ edition = "2021"
 
 [dependencies]
 nokhwa    = { version = "0.10", features = ["input-v4l", "output-threaded"] }
-crossterm = "0.27"
+crossterm = "0.29"
 image     = "0.25"
 anyhow    = "1"
-cpal      = "0.15"
+cpal      = "0.17"
 rustfft   = "6"
 ringbuf   = "0.4"
 
